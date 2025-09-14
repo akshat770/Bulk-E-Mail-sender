@@ -19,7 +19,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", SCO
 client = gspread.authorize(creds)
 
 # Open Google Sheet by URL
-sheet = client.open_by_url("https://docs.google.com/spreadsheets/d/1YjFo3yRsdJJ6cNxyfkcLRvtjL-4kAzv4hIg0esQY5ME/edit?usp=sharing")
+sheet = client.open_by_url("https://docs.google.com/spreadsheets/d/abcdefghijklmnopqrstuvwxyz)
 worksheet = sheet.sheet1  # first sheet
 rows = worksheet.get_all_records()  # list of dicts
 
@@ -30,48 +30,19 @@ def send_email(to_email, name="Friend"):
     msg["To"] = to_email
     msg["Subject"] = "Interested in Research Work Under Your Supervision"
     # Plain text fallback
-    msg.set_content("""\
-Respected Sir,
-
-We hope this email finds you well. We are students of the National Institute of Technology, Srinagar, currently in our third year of B.Tech in Information Technology. We are writing to express our keen interest in securing a research internship under your guidance during the winter break (15 December 2025 – 10 February 2026).
-
-Our academic background and technical exposure have equipped us with a solid foundation in Python, C++, and SQL, along with hands-on experience in Machine Learning libraries such as NumPy, Pandas, Scikit-learn, TensorFlow, and PyTorch. We have also studied Data Structures, Algorithms, Probability & Statistics, and Database Management Systems, which complement our interest in Artificial Intelligence and Machine Learning research.
-
-We are highly motivated to explore real-world applications of ML and would be truly grateful for the opportunity to learn and contribute under your mentorship. Please find our resumes attached for your kind consideration.
-
-Thank you for your time and consideration.
-
-Sincerely,
-Jatin Kumar
-Ankit Maholiya
-Lucky Yadav
-Akshat Singh
-""")
+    msg.set_content("""\your message""")
 
 # HTML version
     msg.add_alternative("""\
 <html>
   <body>
-    <p>Respected Sir,</p>
-    <p>We hope this email finds you well. We are students of the <b>National Institute of Technology, Srinagar</b>, currently in our third year of <b>B.Tech in Information Technology</b>. We are writing to express our keen interest in securing a research internship under your guidance during the winter break (15 December 2025 – 10 February 2026).</p>
-
-    <p>Our academic background and technical exposure have equipped us with a solid foundation in <b>Python, C++, and SQL</b>, along with hands-on experience in Machine Learning libraries such as <b>NumPy, Pandas, Scikit-learn, TensorFlow, and PyTorch</b>. We have also studied Data Structures, Algorithms, Probability & Statistics, and Database Management Systems, which complement our interest in Artificial Intelligence and Machine Learning research.</p>
-
-    <p>We are highly motivated to explore real-world applications of ML and would be truly grateful for the opportunity to learn and contribute under your mentorship. Please find our resumes attached for your kind consideration.</p>
-
-    <p>Thank you for your time and consideration.</p>
-
-    <p>Sincerely,<br>
-    Jatin Kumar<br>
-    Ankit Maholiya<br>
-    Lucky Yadav<br>
-    Akshat Singh</p>
+    <p>your message</p>
   </body>
 </html>
 """, subtype="html")
 
     # Attach resumes
-    for file in ["Akshat_resume.pdf", "Ankit_resume.pdf", "Jatin_resume.pdf", "Lucky_resume.pdf"]:
+    for file in ["1.pdf", "2.pdf", "3.pdf", "4.pdf"]:
         with open(file, "rb") as f:
             msg.add_attachment(
                 f.read(),
